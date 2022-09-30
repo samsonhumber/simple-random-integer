@@ -6,10 +6,22 @@ A quick proof-of-concept for making npm packages, simplifies the math.random fun
 
 - Make an NPM package that makes randomization easier
 - Create node modules and index.js
-- Write the code
+- Write the code for random integer
   - Aim: random(1, 100) => returns random number from 1 to 100
-  - behaves as normal Math.random when no args input
-  - or throws error if no args?!
+  - If one argument, assume 0 is lower bound
+  - Throws error when no args input
+ - Write the code for a random float, rounded to a set number of decimal places/significant figures.
+
+# IDEAS
+
+- Array shuffler
+- Random order of letters in string or words in sentence
+- Gaussian distribution
+  - needs mean and standard deviation as arguments
+- 2-D array, shuffling elements of that?
+- Switches keys and values of object around randomly
+- Generating randomness, like a random array of numbers, of random length
+- Something that prints something random in the console in response to a command?
 
 # GOALS
 
