@@ -1,6 +1,6 @@
 {
   "name": "simple-randomization",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A quick proof-of-concept for making npm packages, simplifies the math.random function for finding random integers",
   "main": "index.js",
   "type": "module",
@@ -15,6 +15,7 @@
     "random"
   ],
   "author": "samsonhumber <printerfissh693@gmail.com>",
+  "contributors": ["simonpartridge86", "B-P-Greenwood"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samsonhumber/simple-randomization/issues"
