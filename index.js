@@ -15,7 +15,8 @@ function random(upper, lower) {
 export function randomObject(obj) {
   try {
     if (Array.isArray(obj)) throw 'Expected an Object, not an array';
-    else if (typeof obj != 'object') throw 'Expected an Object';
+    else if (typeof obj != 'object' || obj === null || obj instanceof Date)
+      throw 'Expected an Object';
     else {
       let keys = Object.keys(obj);
       let values = Object.values(obj);
@@ -34,10 +35,12 @@ export function randomObject(obj) {
   }
 }
 
+//testing bit
 let testObj = {
   hello: 'People',
   goodbye: 'everybody',
   cat: 5,
   dog: 'chicken',
 };
+
 console.log(randomObject(testObj));
