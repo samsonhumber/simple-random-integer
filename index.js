@@ -5,3 +5,4 @@ function random(upper, lower) {
     return Math.floor(Math.random() * (upper + 1));
   }
 }
+export default random;
