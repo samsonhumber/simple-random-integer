@@ -18,7 +18,7 @@ describe('Gaussian function tests', () => {
         
         //ACT 
         const actualMean = gaussianSampleSum / sampleSize; 
-        const actualStd =  squareGaussianSampleSum / sampleSize; 
+        const actualStd =  Math.sqrt(squareGaussianSampleSum / (sampleSize-1)); 
         console.log("Mean and std", actualMean, actualStd)
         //ASSERT
         expect(actualMean).toBeGreaterThan(0 - tolerance);
@@ -36,12 +36,12 @@ describe('Gaussian function tests', () => {
         for (let i=0; i<sampleSize; i++) {
             const newSample = gaussian(trialMean, trialStd);
             gaussianSampleSum += newSample;
-            squareGaussianSampleSum += Math.sqrt(newSample ** 2);
+            squareGaussianSampleSum += (newSample-trialMean) ** 2;
         }
         
         //ACT 
         const actualMean = gaussianSampleSum / sampleSize; 
-        const actualStd =  squareGaussianSampleSum / sampleSize; 
+        const actualStd =  Math.sqrt(squareGaussianSampleSum / (sampleSize-1)); 
         console.log("Mean and std", actualMean, actualStd)
         //ASSERT
         expect(actualMean).toBeGreaterThan(trialMean - tolerance);
