@@ -12,39 +12,32 @@ function random(upper, lower) {
 }
 //export default random;
 
-export function randomWords(str) {
-  let sentence = false;
-  let result = [];
+export function randomObject(obj) {
   try {
-    // checks if sentence passed
-    for (let i = 0; i < str.length; i++) {
-      if (str[i] === ' ') {
-        sentence = true;
-        break;
+    if (Array.isArray(obj)) throw 'Expected an Object, not an array';
+    else if (typeof obj != 'object') throw 'Expected an Object';
+    else {
+      let keys = Object.keys(obj);
+      let values = Object.values(obj);
+      let result = {};
+      while (keys.length > 0) {
+        let kIndex = Math.floor(Math.random() * keys.length);
+        let vIndex = Math.floor(Math.random() * keys.length);
+        result[keys[kIndex]] = values[vIndex];
+        keys.splice(kIndex, 1);
+        values.splice(vIndex, 1);
       }
+      return result;
     }
-    //if sentence passed reorder words
-    if (sentence) {
-      let source = str.split(' ');
-      while (source.length > 0) {
-        let index = Math.floor(Math.random() * source.length);
-        result.push(source[index]);
-        source.splice(index, 1);
-      }
-      return result.join(' ');
-      // else reorder letters in single word
-    } else {
-      let source = str.split('');
-      while (source.length > 0) {
-        let index = Math.floor(Math.random() * source.length);
-        result.push(source[index]);
-        source.splice(index, 1);
-      }
-      return result.join('');
-    }
-  } catch {
-    console.error('Expected a string to be passed');
+  } catch (error) {
+    console.log(error);
   }
 }
 
-console.log(randomWords(4));
+let testObj = {
+  hello: 'People',
+  goodbye: 'everybody',
+  cat: 5,
+  dog: 'chicken',
+};
+console.log(randomObject(testObj));
