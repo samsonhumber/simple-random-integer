@@ -1,3 +1,26 @@
+export function randomObject(obj) {
+  try {
+    if (Array.isArray(obj)) throw 'Expected an Object, not an array';
+    else if (typeof obj != 'object' || obj === null || obj instanceof Date)
+      throw 'Expected an Object';
+    else {
+      let keys = Object.keys(obj);
+      let values = Object.values(obj);
+      let result = {};
+      while (keys.length > 0) {
+        let kIndex = Math.floor(Math.random() * keys.length);
+        let vIndex = Math.floor(Math.random() * keys.length);
+        result[keys[kIndex]] = values[vIndex];
+        keys.splice(kIndex, 1);
+        values.splice(vIndex, 1);
+      }
+      return result;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // randomInt takes up to two positive integers as arguments, returning a random positive integer in that range (inclusive)
 export function randomInt(max, min) {
   try {
@@ -125,5 +148,28 @@ export function randomChar(str, num) {
     return result.join("").toLowerCase();
   } catch (error) {
     console.error(error);
+  }
+}
+
+export function randomObject(obj) {
+  try {
+    if (Array.isArray(obj)) throw 'Expected an Object, not an array';
+    else if (typeof obj != 'object' || obj === null || obj instanceof Date)
+      throw 'Expected an Object';
+    else {
+      let keys = Object.keys(obj);
+      let values = Object.values(obj);
+      let result = {};
+      while (keys.length > 0) {
+        let kIndex = Math.floor(Math.random() * keys.length);
+        let vIndex = Math.floor(Math.random() * keys.length);
+        result[keys[kIndex]] = values[vIndex];
+        keys.splice(kIndex, 1);
+        values.splice(vIndex, 1);
+      }
+      return result;
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
