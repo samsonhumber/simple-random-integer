@@ -1,6 +1,6 @@
 {
   "name": "simple-randomization",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A quick proof-of-concept for making npm packages, simplifies the math.random function for finding random integers",
   "main": "index.js",
   "type": "module",
