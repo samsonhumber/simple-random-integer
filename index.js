@@ -81,3 +81,37 @@ export function randomFloat(max, min, precision) {
     console.error(error);
   }
 }
+
+export function randomElement(arr, num) {
+  try {
+    if (!Array.isArray(arr)) {
+      throw "Invalid input - input must be an array";
+    }
+    if (!num) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    if ((num && isNaN(num)) || !Number.isInteger(num)) {
+      throw "Invalid input - second argument must be a positive integer";
+    }
+    let i = 0;
+    let result = [];
+    while (i < num) {
+      result.push(arr[Math.floor(Math.random() * arr.length)]);
+      i++;
+    }
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function randomChar(str) {
+  try {
+    if (typeof str !== "string") {
+      throw "Invalid input - input must be a string";
+    }
+    return str[Math.floor(Math.random() * str.length)];
+  } catch (error) {
+    console.error(error);
+  }
+}
