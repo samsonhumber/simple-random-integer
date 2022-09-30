@@ -5,5 +5,3 @@ function random(upper, lower) {
     return Math.floor(Math.random() * (upper + 1));
   }
 }
-
-console.log(random(4));
