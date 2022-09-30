@@ -10,13 +10,13 @@ A quick proof-of-concept for making npm packages, simplifies the math.random fun
   - Aim: random(1, 100) => returns random number from 1 to 100
   - If one argument, assume 0 is lower bound
   - Throws error when no args input
- - Write the code for a random float, rounded to a set number of decimal places/significant figures.
+ - Write the code for a random float, rounded to a set number of decimal places/significant figures: Simon is doing this.
 
 # IDEAS
 
 - Array shuffler
-- Random order of letters in string or words in sentence
-- Gaussian distribution
+- Random order of letters in string or words in sentence: Ben is doing this.
+- Gaussian distribution: Sam is doing this.
   - needs mean and standard deviation as arguments
 - 2-D array, shuffling elements of that?
 - Switches keys and values of object around randomly
