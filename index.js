@@ -10,12 +10,15 @@ function random(upper, lower) {
 }
 
 export function gaussian(mean, std) {
-  // mean is centre of distribution - if not given, it is assumed 0
-  // std is standard deviation, how 'wide' the distribution is - if not given, it is assumed 1
+  // mean is centre of distribution - if not given, it is assumed 0, std is standard deviation, how 'wide' the distribution is - if not given, it is assumed 1
   // The approach here uses a Box-Muller transformation
+
   const uniforms = [Math.random(), Math.random()];
-  const normals = [Math.sqrt(-2*Math.log(uniforms[0])) * Math.cos(2*Math.PI*uniforms[1]), Math.sqrt(-2*Math.log(uniforms[0])) * Math.sin(2*Math.PI*uniforms[1])];
-  //console.log(uniforms, normals);
+  const normals = [Math.sqrt(-2*Math.log(uniforms[0])) * Math.cos(2*Math.PI*uniforms[1])];
+
+  // The orginal formula says that the sin version is independent but on same distribution
+  //const normals = [Math.sqrt(-2*Math.log(uniforms[0])) * Math.cos(2*Math.PI*uniforms[1]), Math.sqrt(-2*Math.log(uniforms[0])) * Math.sin(2*Math.PI*uniforms[1])];
+  
   if (mean && std && mean+std !== NaN) {
     return normals[0]*std + mean
   } else if(std && std !== NaN) {
