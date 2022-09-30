@@ -1,3 +1,4 @@
+// randomInt takes up to two positive integers as arguments, returning a random positive integer in that range (inclusive)
 export function randomInt(max, min) {
   try {
     if (max && min) {
@@ -5,21 +6,21 @@ export function randomInt(max, min) {
         isNaN(max) ||
         isNaN(min) ||
         !Number.isInteger(max) ||
-        !Number.isInteger(min)
+        !Number.isInteger(min) ||
+        max < 0 ||
+        min < 0
       ) {
-        throw "Invalid inputs - arguments must be integers";
+        throw "Invalid inputs - arguments must be positive integers";
       }
       if (!(max > min)) {
         throw "Invalid input - max value is lower than min value";
-      } else {
-        return Math.floor(Math.random() * (max - min + 1) + min);
       }
+      return Math.floor(Math.random() * (max - min + 1) + min);
     } else if (max) {
       if (isNaN(max) || !(max > 0) || !Number.isInteger(max)) {
         throw "Invalid input - single argument must be a positive integer";
-      } else {
-        return Math.floor(Math.random() * (max + 1));
       }
+      return Math.floor(Math.random() * (max + 1));
     } else {
       throw "Required arguments were not provided";
     }
@@ -28,22 +29,53 @@ export function randomInt(max, min) {
   }
 }
 
+// randomInt takes up to three positive integers as arguments (max, min, and precision)
+// returns a random float in the range between min and max (inclusive) with set precision (number of decimal places)
 export function randomFloat(max, min, precision) {
   try {
     if (max && min && precision) {
+      if (
+        isNaN(max) ||
+        isNaN(min) ||
+        isNaN(precision) ||
+        !Number.isInteger(max) ||
+        !Number.isInteger(min) ||
+        !Number.isInteger(precision) ||
+        max < 0 ||
+        min < 0 ||
+        precision < 0
+      ) {
+        throw "Invalid inputs - arguments must be positive integers";
+      }
       if (!max > min) {
         throw "Invalid inputs - max value is lower than min value";
       }
       if (!Number.isInteger(precision)) {
-        throw "Invalid inputs - third argument must be an integer";
+        throw "Invalid inputs - precision argument must be an integer";
       }
       return (Math.random() * (max - min) + min).toFixed(precision);
     } else if (max && min) {
+      if (
+        isNaN(max) ||
+        isNaN(min) ||
+        !Number.isInteger(max) ||
+        !Number.isInteger(min) ||
+        max < 0 ||
+        min < 0
+      ) {
+        throw "Invalid inputs - arguments must be positive integers";
+      }
+      if (!max > min) {
+        throw "Invalid inputs - max value is lower than min value";
+      }
       return Math.random() * (max - min) + min;
     } else if (max) {
+      if (isNaN(max) || !Number.isInteger(max) || max < 0) {
+        throw "Invalid input - argument must be a positive integer";
+      }
       return Math.random() * max;
     } else {
-      throw console.error("Required arguments were not provided");
+      throw "Required arguments were not provided";
     }
   } catch (error) {
     console.error(error);

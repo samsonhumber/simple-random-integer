@@ -1,6 +1,6 @@
 # simple-random-integer
 
-A quick proof-of-concept for making npm packages, simplifies the math.random function for finding random integers
+A quick proof-of-concept for making npm packages, provides functionality that reduces the
 
 # PLAN
 
@@ -10,7 +10,7 @@ A quick proof-of-concept for making npm packages, simplifies the math.random fun
   - Aim: random(1, 100) => returns random number from 1 to 100
   - If one argument, assume 0 is lower bound
   - Throws error when no args input
- - Write the code for a random float, rounded to a set number of decimal places/significant figures.
+- Write the code for a random float, rounded to a set number of decimal places/significant figures.
 
 # IDEAS
 
