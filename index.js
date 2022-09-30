@@ -18,7 +18,10 @@ export function randomWords(str) {
   try {
     // checks if sentence passed
     for (let i = 0; i < str.length; i++) {
-      if (str[i] === ' ') sentence = true;
+      if (str[i] === ' ') {
+        sentence = true;
+        break;
+      }
     }
     //if sentence passed reorder words
     if (sentence) {
