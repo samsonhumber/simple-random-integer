@@ -15,29 +15,33 @@ function random(upper, lower) {
 export function randomWords(str) {
   let sentence = false;
   let result = [];
-  // checks if sentence passed
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === ' ') sentence = true;
-  }
-  //if sentence passed reorder words
-  if (sentence) {
-    let source = str.split(' ');
-    while (source.length > 0) {
-      let index = Math.floor(Math.random() * source.length);
-      result.push(source[index]);
-      source.splice(index, 1);
+  try {
+    // checks if sentence passed
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === ' ') sentence = true;
     }
-    return result.join(' ');
-    // else reorder letters in single word
-  } else {
-    let source = str.split('');
-    while (source.length > 0) {
-      let index = Math.floor(Math.random() * source.length);
-      result.push(source[index]);
-      source.splice(index, 1);
+    //if sentence passed reorder words
+    if (sentence) {
+      let source = str.split(' ');
+      while (source.length > 0) {
+        let index = Math.floor(Math.random() * source.length);
+        result.push(source[index]);
+        source.splice(index, 1);
+      }
+      return result.join(' ');
+      // else reorder letters in single word
+    } else {
+      let source = str.split('');
+      while (source.length > 0) {
+        let index = Math.floor(Math.random() * source.length);
+        result.push(source[index]);
+        source.splice(index, 1);
+      }
+      return result.join('');
     }
-    return result.join('');
+  } catch {
+    console.error('Expected a string to be passed');
   }
 }
 
-console.log(randomWords('hellopeople'));
+console.log(randomWords(4));
