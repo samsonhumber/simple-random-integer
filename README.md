@@ -19,8 +19,8 @@ Includes functionality for:
 # Quick Start
 
 ```
-randomInt(max, min) ==> random integer number between min and max inclusive
-randomFloat(max, min, precision) ==> random rational number between min and max inclusive, to number of decimal places given by precision
+randomInt(max, min) ==> random positive integer number between min and max inclusive
+randomFloat(max, min, precision) ==> random positive rational number between min and max inclusive, to number of decimal places given by precision
 randomElement(arr, num) ==> random element of given array, arr. If num is provided, an array containing random elements of arr, length num, is returned.
 randomChar(str, num) ==> random character of given string, str. If num is provided, a string is provided containing random characters of str, length num, is returned.
 randomObject(obj) ==> object containing random order of keys and values from obj.
