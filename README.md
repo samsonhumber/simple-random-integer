@@ -1,30 +1,27 @@
-# simple-random-integer
+# simple-randomization
 
-A quick proof-of-concept for making npm packages, provides functionality that reduces the
+An npm package that allows random number generation to be utilized more easily.
 
-# PLAN
+Includes functionality for:
 
-- Make an NPM package that makes randomization easier
-- Create node modules and index.js
-- Write the code for random integer
-  - Aim: random(1, 100) => returns random number from 1 to 100
-  - If one argument, assume 0 is lower bound
-  - Throws error when no args input
- - Write the code for a random float, rounded to a set number of decimal places/significant figures: Simon is doing this.
+- Random integer generation
+- Random float generation
+- Obtaining random element(s) from an array
+- Obtaining random character(s) from a string
+- Randomizing an existing string (jumbles the characters)
+- Randomizing an object (jumbles the key–value pairs)
+- Generating random numbers with probability based on a normal distribution
 
-# IDEAS
+# Installation
+
+`npm install simple-randomization`
+
+# Quick Start
+
+# Future Plans
 
 - Array shuffler
-- Random order of letters in string or words in sentence: Ben is doing this.
-- Gaussian distribution: Sam is doing this. DONE
-  - needs mean and standard deviation as arguments
-- 2-D array, shuffling elements of that?
-- Switches keys and values of object around randomly
-- Generating randomness, like a random array of numbers, of random length
-- Something that prints something random in the console in response to a command?
-
-# GOALS
-
-- Create an NPM package that allows integer randomization (expand from there)
-- Demonstrate the installed NPM package
-- Have documentation that explains how to use package
+- Randomizing elements in 2-D array
+- Generators of randomness:
+  - random array of numbers (of random length?)
+- Print random content in the console in response to a command(?)
