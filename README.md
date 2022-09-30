@@ -16,7 +16,7 @@ A quick proof-of-concept for making npm packages, provides functionality that re
 
 - Array shuffler
 - Random order of letters in string or words in sentence: Ben is doing this.
-- Gaussian distribution: Sam is doing this.
+- Gaussian distribution: Sam is doing this. DONE
   - needs mean and standard deviation as arguments
 - 2-D array, shuffling elements of that?
 - Switches keys and values of object around randomly

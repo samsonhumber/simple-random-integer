@@ -1,26 +1,3 @@
-export function randomObject(obj) {
-  try {
-    if (Array.isArray(obj)) throw 'Expected an Object, not an array';
-    else if (typeof obj != 'object' || obj === null || obj instanceof Date)
-      throw 'Expected an Object';
-    else {
-      let keys = Object.keys(obj);
-      let values = Object.values(obj);
-      let result = {};
-      while (keys.length > 0) {
-        let kIndex = Math.floor(Math.random() * keys.length);
-        let vIndex = Math.floor(Math.random() * keys.length);
-        result[keys[kIndex]] = values[vIndex];
-        keys.splice(kIndex, 1);
-        values.splice(vIndex, 1);
-      }
-      return result;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 // randomInt takes up to two positive integers as arguments, returning a random positive integer in that range (inclusive)
 export function randomInt(max, min) {
   try {
@@ -172,4 +149,32 @@ export function randomObject(obj) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function gaussian(mean=0, std=1) {
+  try{
+    if(typeof mean !== 'number' || typeof std !== 'number') {
+      console.log('error 1 thrown');
+      throw "Only accepts number inputs"
+    } else if (isNaN(mean) || isNaN(std)) {
+      console.log('error 2 thrown');
+      throw "Inputs cannot not be NaN"
+    } else {
+      // mean is centre of distribution - if not given, it is assumed 0, std is standard deviation, how 'wide' the distribution is - if not given, it is assumed 1
+      // The approach here uses a Box-Muller transformation
+      if (arguments.length>2){
+        console.log('WARNING: you may have entered more than 2 arguments, any additional arguments are ignored.')
+      }
+      const uniforms = [Math.random(), Math.random()];
+      const normals = [Math.sqrt(-2*Math.log(uniforms[0])) * Math.cos(2*Math.PI*uniforms[1])];
+
+      // The orginal formula says that the sin version is independent but on same distribution
+      //const normals = [Math.sqrt(-2*Math.log(uniforms[0])) * Math.cos(2*Math.PI*uniforms[1]), Math.sqrt(-2*Math.log(uniforms[0])) * Math.sin(2*Math.PI*uniforms[1])];
+
+      return normals[0]*std + mean
+    }
+  } catch(err) {
+    console.error('Invalid input arguments. Mean is', mean, ', standard deviation is', std);
+    throw(err);
+  } 
 }
