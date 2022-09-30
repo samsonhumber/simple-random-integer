@@ -90,7 +90,7 @@ export function randomElement(arr, num) {
     if (!num) {
       return arr[Math.floor(Math.random() * arr.length)];
     }
-    if ((num && isNaN(num)) || !Number.isInteger(num)) {
+    if (isNaN(num) || !Number.isInteger(num)) {
       throw "Invalid input - second argument must be a positive integer";
     }
     let i = 0;
@@ -105,12 +105,24 @@ export function randomElement(arr, num) {
   }
 }
 
-export function randomChar(str) {
+export function randomChar(str, num) {
   try {
     if (typeof str !== "string") {
       throw "Invalid input - input must be a string";
     }
-    return str[Math.floor(Math.random() * str.length)];
+    if (!num) {
+      return str[Math.floor(Math.random() * str.length)];
+    }
+    if (isNaN(num) || !Number.isInteger(num)) {
+      throw "Invalid input - second argument must be a positive integer";
+    }
+    let i = 0;
+    let result = [];
+    while (i < num) {
+      result.push(str[Math.floor(Math.random() * str.length)]);
+      i++;
+    }
+    return result.join("").toLowerCase();
   } catch (error) {
     console.error(error);
   }
