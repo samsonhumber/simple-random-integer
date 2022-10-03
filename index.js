@@ -29,6 +29,27 @@ export function randomInt(max, min) {
   }
 }
 
+
+// altRanInt: max is an upper bound, non-inclusive; min is lower bound, inclusive. This can take negative arguments
+export function altRanInt(max=100, min=0) {
+  try {
+      if (
+        isNaN(max) ||
+        isNaN(min) ||
+        !Number.isInteger(max) ||
+        !Number.isInteger(min)
+      ) {
+        throw 'Invalid inputs - arguments must be integers';
+      }
+      if (!(max > min)) {
+        throw 'Invalid input - max value is lower than min value';
+      }
+      return Math.floor(Math.random() * (max - min)) + min;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 // randomInt takes up to three positive integers as arguments (max, min, and precision)
 // returns a random float in the range between min and max (inclusive) with set precision (number of decimal places)
 export function randomFloat(max, min, precision) {

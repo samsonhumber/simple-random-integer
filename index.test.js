@@ -1,5 +1,60 @@
 import { test, expect, describe } from '@jest/globals';
-import { gaussian } from "./index.js";
+import { gaussian, altRanInt } from "./index.js";
+
+describe('altRanInt function tests', () => {
+    const sampleSize = 10000;
+    const tolerance = 0.01;
+    test('tests to see if an upper bound of 2 and lower bound of 0 results in roughly equal chance of the result being 0 or 1', () => {
+        //ARRANGE
+        const maxVal = 2;
+        const minVal = 0;
+        let frequencyArray = [0, 0];
+        //ACT 
+        for (let i=0; i<sampleSize; i++) {
+            const newSample = altRanInt(maxVal, minVal);
+            frequencyArray[newSample] += 1;
+        }
+        console.log("Frequency array", frequencyArray);
+        const frequencyRatio = frequencyArray[0]/frequencyArray[1]
+        //ASSERT
+        expect(frequencyRatio).toBeGreaterThan(1 - (maxVal-minVal)*tolerance);
+        expect(frequencyRatio).toBeLessThan(1 + (maxVal-minVal)*tolerance);
+    });
+    
+    test('tests to see if an upper bound of 2 and lower bound of -1 results in roughly equal chance of the result being -1, 0 or 1', () => {
+        //ARRANGE
+        const maxVal = 2;
+        const minVal = -1;
+        let frequencyArray = [0, 0, 0];
+        //ACT 
+        for (let i=0; i<sampleSize; i++) {
+            const newSample = altRanInt(maxVal, minVal);
+            frequencyArray[newSample - minVal] += 1;
+        }
+        console.log("Frequency array", frequencyArray);
+        const frequencyRatio = Math.min(...frequencyArray) / Math.min(...frequencyArray);
+        //ASSERT
+        expect(frequencyRatio).toBeGreaterThan(1 - (maxVal-minVal)*tolerance);
+        //expect(frequencyRatio).toBeLessThan(1 + tolerance);
+    });
+
+    test('tests to see if an upper bound of -1 and lower bound of -5 results in roughly equal chance of the result being -1, 0 or 1', () => {
+        //ARRANGE
+        const maxVal = -1;
+        const minVal = -5;
+        let frequencyArray = [0, 0, 0, 0];
+        //ACT 
+        for (let i=0; i<sampleSize; i++) {
+            const newSample = altRanInt(maxVal, minVal);
+            frequencyArray[newSample - minVal] += 1;
+        }
+        console.log("Frequency array", frequencyArray);
+        const frequencyRatio = Math.min(...frequencyArray) / Math.min(...frequencyArray);
+        //ASSERT
+        expect(frequencyRatio).toBeGreaterThan(1 - (maxVal-minVal)*tolerance);
+        //expect(frequencyRatio).toBeLessThan(1 + tolerance);
+    });
+});
 
 describe('Gaussian function tests', () => {
     const sampleSize = 100000;
